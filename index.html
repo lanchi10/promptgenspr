@@ -1,0 +1,765 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך פרומפטים מלא - קבל תוצאות מדהימות מכל AI בשניות</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Heebo', Arial, sans-serif;
+        font-size: 18px;
+        line-height: 1.7;
+        color: #2c3e50;
+        direction: rtl;
+      }
+
+      .hero-section {
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 30px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-title {
+        font-size: 3.2em;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-subtitle {
+        font-size: 1.4em;
+        margin-bottom: 30px;
+        opacity: 0.95;
+      }
+
+      .instructions-section {
+        background: #f8f9ff;
+        border: 3px solid #4a90e2;
+        border-radius: 15px;
+        padding: 40px;
+        margin: 40px 0;
+        text-align: center;
+      }
+
+      .instructions-title {
+        font-size: 2.2em;
+        color: #2c5aa0;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .what-is-prompt {
+        background: #e8f4f8;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        border-right: 5px solid #3498db;
+      }
+
+      .steps-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .step {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #27ae60;
+      }
+
+      .step-number {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #27ae60;
+        margin-bottom: 10px;
+      }
+
+      .step-title {
+        font-size: 1.3em;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      }
+
+      .ai-bots {
+        background: #fff3cd;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        border: 2px solid #ffc107;
+      }
+
+      .ai-bots-title {
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #856404;
+        margin-bottom: 15px;
+      }
+
+      .bots-list {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .bot-item {
+        background: white;
+        padding: 15px 25px;
+        border-radius: 25px;
+        font-weight: 500;
+        color: #495057;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .category-section {
+        margin: 50px 0;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .category-header {
+        background: linear-gradient(135deg, #4a90e2, #357abd);
+        color: white;
+        padding: 25px 30px;
+        font-size: 1.8em;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .category-intro {
+        background: #f8f9fa;
+        padding: 20px 30px;
+        font-style: italic;
+        color: #6c757d;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .prompt-card {
+        border-bottom: 1px solid #e9ecef;
+        padding: 30px;
+        position: relative;
+      }
+
+      .prompt-card:last-child {
+        border-bottom: none;
+      }
+
+      .prompt-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .prompt-title {
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 0;
+      }
+
+      .copy-button {
+        background: #27ae60;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 1.1em;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        min-width: 120px;
+        justify-content: center;
+      }
+
+      .copy-button:hover {
+        background: #219a52;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+      }
+
+      .copy-button.copied {
+        background: #2ecc71;
+        animation: pulse 0.6s ease-in-out;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .prompt-description {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+
+      .prompt-text {
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 20px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        line-height: 1.6;
+        margin: 15px 0;
+        position: relative;
+        border-right: 5px solid #3498db;
+      }
+
+      .variable {
+        background: #ff6b6b;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .example {
+        background: #e8f5e8;
+        border: 1px solid #27ae60;
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 15px;
+        font-style: italic;
+        color: #2d5016;
+      }
+
+      .example-label {
+        font-weight: 600;
+        color: #27ae60;
+        margin-bottom: 5px;
+      }
+
+      .notification {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #27ae60;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        font-weight: 500;
+        z-index: 1000;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        display: none;
+      }
+
+      .footer-note {
+        text-align: center;
+        margin-top: 50px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-top: 3px solid #3498db;
+        font-style: italic;
+        color: #6c757d;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          font-size: 16px;
+        }
+
+        .hero-title {
+          font-size: 2.2em;
+        }
+
+        .steps-container {
+          grid-template-columns: 1fr;
+        }
+
+        .bots-list {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .prompt-header {
+          flex-direction: column;
+          gap: 15px;
+          align-items: stretch;
+        }
+
+        .copy-button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body style="" data-new-gr-c-s-loaded="14.1243.0" data-new-gr-c-s-check-loaded="14.1243.0" data-gr-ext-installed="" spellcheck="true" aria-label="To enrich screen reader interactions, please activate Accessibility in Grammarly extension settings">
+    <div class="notification" id="notification">✅ הפרומפט הועתק בהצלחה!</div>
+
+    <div class="hero-section">
+      <h1 class="hero-title">🚀 מדריך פרומפטים מלא</h1>
+      <p class="hero-subtitle">קבל תוצאות מדהימות מכל AI בשניות - פשוט, מהיר ויעיל!</p>
+    </div>
+
+    <div class="instructions-section">
+      <h2 class="instructions-title">🎯 איך להשתמש במדריך הזה?</h2>
+
+      <div class="what-is-prompt">
+        <h3>💡 מה זה פרומפט?</h3>
+        <p>פרומפט זה הוראה שאתה נותן לבוט AI (כמו ChatGPT). ככל שהוראה יותר מדויקת וברורה - כך התוצאה טובה יותר!</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1️⃣</div>
+          <div class="step-title">בחר פרומפט</div>
+          <p>מצא את הפרומפט המתאים למטרה שלך מהקטגוריות למטה</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2️⃣</div>
+          <div class="step-title">לחץ על "העתק"</div>
+          <p>לחץ על הכפתור הירוק ליד הפרומפט כדי להעתיק אותו</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3️⃣</div>
+          <div class="step-title">הדבק ושנה</div>
+          <p>הדבק בבוט AI ושנה את המילים האדומות לפרטים שלך</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4️⃣</div>
+          <div class="step-title">קבל תוצאה</div>
+          <p>שלח והמתן לתוצאה המותאמת בדיוק לצרכים שלך!</p>
+        </div>
+      </div>
+
+      <div class="ai-bots">
+        <div class="ai-bots-title">🤖 בוטים מומלצים לשימוש:</div>
+        <div class="bots-list">
+          <div class="bot-item">ChatGPT</div>
+          <div class="bot-item">Claude</div>
+          <div class="bot-item">Gemini</div>
+          <div class="bot-item">Copilot</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header">📊 עסקים ושיווק</div>
+      <div class="category-intro">פרומפטים מתקדמים לעסקים, שיווק ופיתוח עסקי - מתאים ליזמים ומשווקים</div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">ניתוח מחקר שוק מקצועי</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'market-research')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">קבל ניתוח מעמיק של השוק שלך כולל מתחרים, קהל יעד והזדמנויות</div>
+        <div class="prompt-text" id="market-research">
+          פעל כאנליסט מחקר שוק מקצועי. אני צריך ניתוח מקיף של השוק של <span class="variable" style="transform: scale(1); box-shadow: none;">התחום שלך</span> עבור
+          <span class="variable">המוצר/שירות שלך</span>. אנא ספק לי: 1. גודל השוק הנוכחי ומגמות צמיחה 2. ניתוח מתחרים
+          ראשיים ומיקומם בשוק 3. פילוח קהל היעד - דמוגרפיה ופסיכוגרפיה 4. הזדמנויות שוק ואיומים פוטנציאליים 5. אסטרטגיית
+          מיקום מומלצת למוצר שלי התמקד באזור <span class="variable">האזור הגאוגרפי שלך</span> וקח בחשבון
+          <span class="variable" style="transform: scale(1); box-shadow: none;">מגבלות או אילוצים ספציפיים</span>.
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          להחליף "התחום שלך" ב"אפליקציות כושר", "המוצר שלך" ב"אפליקציית מדיטציה", "האזור" ב"ישראל"
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">אסטרטגיית רשתות חברתיות</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'social-strategy')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">בנה אסטרטגיה מקיפה לרשתות החברתיות עם תוכן, לוח זמנים ומדדי הצלחה</div>
+        <div class="prompt-text" id="social-strategy">
+          צור אסטרטגיית רשתות חברתיות מקיפה עבור <span class="variable">סוג העסק שלך</span> המיועד ל<span class="variable">קהל היעד שלך</span>. כלול בתוכנית: 1. עמודי תוכן מרכזיים ונושאים שבועיים 2. לוח זמנים מפורט לפרסומים ב<span class="variable">הפלטפורמות שלך</span>
+          3. אסטרטגיות לעידוד מעורבות וגידול עוקבים 4. המלצות לתגיות ומילות מפתח 5. סוגי תוכן מומלצים (פוסטים, סטוריז,
+          רילס) 6. מתווה לוח שנה חודשי עם אירועים ותאריכים חשובים קול המותג צריך להיות
+          <span class="variable">אופי המותג שלך</span> והמטרה העיקרית היא
+          <span class="variable">המטרה העסקית שלך</span>.
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "מסעדה איטלקית", "משפחות צעירות", "אינסטגרם ופייסבוק", "חם ומזמין", "הגדלת הזמנות"
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">קמפיין מייל מרקטינג</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'email-campaign')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">עצב קמפיין מייל מקצועי עם רצף הודעות, שורות נושא ובדיקות A/B</div>
+        <div class="prompt-text" id="email-campaign">
+          עצב קמפיין מייל מרקטינג מקיף עבור <span class="variable">המוצר/שירות שלך</span>. צור עבורי: 1. 5 שורות נושא
+          שונות לבדיקת A/B 2. רצף מיילים: קבלת פנים → טיפוח → המרה → שימור 3. הצעות מגוונות לקריאה לפעולה 4. אסטרטגיית
+          פילוח לקהלים שונים 5. המלצות לזמני שליחה ותדירות פרטי הקמפיין: - קהל יעד:
+          <span class="variable">התיאור של הקהל שלך</span> - מטרת הקמפיין: <span class="variable">המטרה העיקרית</span> -
+          משך הקמפיין: <span class="variable">פרק הזמן</span> - תקציב: <span class="variable">התקציב המוקצב</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "קורס אנגלית מקוון", "אנשי עסקים 25-45", "הגדלת הרשמות", "חודש", "5000 ש״ח"
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header">✍️ כתיבה יצירתית ויצירת תוכן</div>
+      <div class="category-intro">פרומפטים לכותבים, יוצרי תוכן ומי שרוצה לייצר תוכן מעניין ואיכותי</div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">מאמר בלוג מקצועי</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'blog-post')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">צור מאמר בלוג מובנה עם כותרות, תוכן עניינים ואופטימיזציה לגוגל</div>
+        <div class="prompt-text" id="blog-post">
+          כתוב מאמר בלוג מקיף ומקצועי על הנושא "<span class="variable">הנושא שלך</span>" המיועד ל<span class="variable">קהל היעד שלך</span>. בנה את המאמר כך: 1. 3 אפשרויות לכותרת מושכת ואטרקטיבית 2. פסקת פתיחה שתופסת את תשומת הלב 3. תוכן עניינים
+          מפורט 4. 5-7 חלקים ראשיים עם כותרות משנה ברורות 5. דוגמאות מעשיות ומקרי בוחן רלוונטיים 6. רשימת טיפים או צעדים
+          לפעולה 7. סיכום עם קריאה לפעולה חזקה 8. תיאור מטא לאופטימיזציה במנועי חיפוש דרישות נוספות: - אורך: כ<span class="variable">מספר מילים</span>
+          מילים - סגנון כתיבה: <span class="variable">הסגנון הרצוי</span> - מילות מפתח לשילוב:
+          <span class="variable">מילות המפתח שלך</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "טיפים לעבודה מהבית", "עובדים מרוחקים", "1500", "מעשי ועניינים", "עבודה מהבית, פרודוקטיביות"
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">תסריט וידיו מרתק</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'video-script')">📋 העתק</button>
+        </div>
+        <div class="prompt-description">צור תסריט מלא לוידיו עם הנחיות קוליות, ויזואליות וטיפים לצילום</div>
+        <div class="prompt-text" id="video-script">
+          כתוב תסריט מלא לוידיו על <span class="variable">נושא הוידיו שלך</span> באורך
+          <span class="variable">משך הוידיו בדקות</span> דקות. התסריט צריך לכלול: 1. פתיחה שתופסת תשומת לב (ה-5 שניות
+          הראשונות) 2. הצגת הבעיה או השאלה המרכזית 3. פיתוח התוכן בצורה מובנה ומעניינת 4. דוגמאות קונקרטיות ומעשיות 5.
+          קריאה לפעולה ברורה בסוף 6. הנחיות ויזואליות (מה להציג על המסך) 7. הנחיות לטון הקול והקצב פרטים נוספים: - קהל
+          יעד: <span class="variable">הקהל שלך</span> - סגנון הוידיו: <span class="variable">הסגנון הרצוי</span> - המסר
+          המרכזי: <span class="variable">המסר העיקרי</span> - פלטפורמה: <span class="variable">איפה יפורסם</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "איך להכין פיצה בבית", "3", "משפחות", "חם ומזמין", "בישול קל ומהנה", "יוטיוב"
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">פוסט רשתות חברתיות ויראלי</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'social-post')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">צור פוסט מעניין עם טקסט, תגיות והמלצות לתמונות שיגרור מעורבות גבוהה</div>
+        <div class="prompt-text" id="social-post">
+          צור פוסט מעניין ומעורר מעורבות עבור <span class="variable">הפלטפורמה שלך</span> בנושא
+          <span class="variable">הנושא שלך</span>. הפוסט צריך לכלול: 1. טקסט קצר ומושך שתופס תשומת לב מיידית 2. 5-10
+          תגיות רלוונטיות ופופולריות 3. קריאה לפעולה שמעודדת תגובות ושיתופים 4. הצעות לויזואלים או תמונות מתאימות 5. זמן
+          פרסום מומלץ לחשיפה מקסימלית 6. שאלה או נושא שיעורר דיון בתגובות 7. 3-5 אמוג'ים רלוונטיים פרטי הפוסט: - קהל
+          יעד: <span class="variable">הקהל שלך</span> - טון ואווירה: <span class="variable">הטון הרצוי</span> - מטרת
+          הפוסט: <span class="variable">המטרה העיקרית</span> - אורך מועדף: <span class="variable">אורך הטקסט</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "אינסטגרם", "טיפי יופי", "נשים 20-35", "חברותי ומעודד", "העלאת מעורבות", "קצר ותמציתי"
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header">💻 טכנולוגיה ופיתוח</div>
+      <div class="category-intro">פרומפטים למפתחים, אנשי טכנולוגיה ומי שעובד עם מערכות דיגיטליות</div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">סקירת קוד מקצועית</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'code-review')">📋 העתק</button>
+        </div>
+        <div class="prompt-description">קבל סקירה מעמיקה של הקוד שלך עם הצעות לשיפור, אבטחה וביצועים</div>
+        <div class="prompt-text" id="code-review">
+          בצע סקירת קוד מקצועית ומקיפה עבור הקוד הבא ב<span class="variable">שפת התכנות</span>. אנא בדק ונתח את הנושאים
+          הבאים: 1. איכות הקוד, נקיון וקריאות 2. ביצועים ואפשרויות אופטימיזציה 3. בעיות אבטחה פוטנציאליות ופגיעויות 4.
+          עמידה בסטנדרטים של השפה 5. ארכיטקטורה ועיצוב הקוד 6. טיפול בשגיאות וחריגות 7. יכולת תחזוקה וגמישות לעדכונים
+          עתידיים 8. הצעות קונקרטיות לשיפור עם דוגמאות קוד התמקד במיוחד ב<span class="variable" style="transform: scale(1); box-shadow: none;">התחום הספציפי לבדיקה</span>. הקוד לסקירה:
+          <span class="variable" style="transform: scale(1); box-shadow: none;">הדבק כאן את הקוד שלך</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          להחליף "JavaScript", "אבטחת תשלומים", ולהדביק את הקוד במקום המיועד
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">תיעוד טכני מקיף</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'tech-documentation')">📋 העתק</button>
+        </div>
+        <div class="prompt-description">צור תיעוד מקצועי עם הדרכות, דוגמאות קוד והסברים מפורטים</div>
+        <div class="prompt-text" id="tech-documentation">
+          צור תיעוד טכני מקיף ומקצועי עבור <span class="variable">שם הפרויקט/המערכת</span> ב<span class="variable">שפת התכנות/טכנולוגיה</span>. התיעוד צריך לכלול: 1. סקירה כללית של המערכת ומטרותיה 2. מדריך התקנה צעד אחר צעד 3. דוגמאות שימוש בסיסיות עם
+          קוד 4. תיעוד API/פונקציות מפורט 5. הסבר קבצי קונפיגורציה והגדרות 6. פתרונות לבעיות נפוצות (Troubleshooting) 7.
+          הנחיות לתרומה לפרויקט 8. רשימת שינויים (Changelog) 9. מידע על רישיונות ותלויות פרטי התיעוד: - קהל יעד:
+          <span class="variable">מפתחים/משתמשים קצה</span> - רמת פירוט: <span class="variable">בסיסי/מתקדם</span> -
+          פורמט: <span class="variable">Markdown/HTML/Wiki</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "ספריית React לתרשימים", "JavaScript", "מפתחים", "מתקדם", "Markdown"
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header">🎓 לימודים וחינוך</div>
+      <div class="category-intro">פרומפטים למורים, סטודנטים ומי שרוצה ללמוד או ללמד נושאים שונים</div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">הכנת שיעור אינטראקטיבי</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'lesson-plan')">📋 העתק</button>
+        </div>
+        <div class="prompt-description">צור תוכנית שיעור מלאה עם פעילויות, חומרים וכלי הערכה</div>
+        <div class="prompt-text" id="lesson-plan">
+          הכן תוכנית שיעור מפורטת ואינטראקטיבית בנושא "<span class="variable">נושא השיעור</span>" עבור תלמידים בגיל
+          <span class="variable">הגיל של התלמידים</span>. תוכנית השיעור תכלול: 1. מטרות למידה ברורות ומדידות 2. פעילות
+          פתיחה מעניינת (5-10 דקות) 3. הסבר התוכן עם דוגמאות מעשיות 4. פעילויות אינטראקטיביות וקבוצתיות 5. כלי הערכה
+          ובדיקת הבנה 6. סיכום ושאלות לחזרה 7. משימה לבית מעניינת 8. חומרים וכלים נדרשים 9. התאמות לתלמידים עם צרכים
+          מיוחדים פרטי השיעור: - משך השיעור: <span class="variable">זמן השיעור בדקות</span> דקות - מספר תלמידים:
+          <span class="variable">מספר התלמידים</span> - רמת הידע הקיימת: <span class="variable">רמת הבסיס</span> - סגנון
+          הוראה: <span class="variable">הסגנון המועדף</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "מערכת השמש", "כיתה ה׳ (10-11)", "45", "25", "בסיסי", "אינטראקטיבי ומעשי"
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">הסבר פשוט למושג מורכב</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'explain-concept')">📋 העתק</button>
+        </div>
+        <div class="prompt-description">קבל הסבר ברור ופשוט לכל מושג מורכב עם דוגמאות וסיכומים</div>
+        <div class="prompt-text" id="explain-concept">
+          הסבר לי את המושג "<span class="variable" style="transform: scale(1); box-shadow: none;">המושג שרוצה להבין</span>" בצורה פשוטה וברורה שמתאימה לרמה של
+          <span class="variable">הרמה או הגיל</span>. ההסבר צריך לכלול: 1. הגדרה פשוטה במילים קלות להבנה 2. 2-3 אנלוגיות
+          מהחיים היומיומיים 3. דוגמאות קונקרטיות ומוחשיות 4. איור או תיאור חזותי של המושג 5. קישור לידע קיים או דברים
+          מוכרים 6. 3-5 שאלות לבדיקת הבנה 7. פעילות קטנה לתרגול המושג 8. סיכום בנקודות עיקריות 9. הצעות ללמידה נוספת
+          בנושא התמקד במיוחד ב<span class="variable">הפן הספציפי במושג</span> והשתמש בשפה
+          <span class="variable">פשוטה/מקצועית</span>.
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "כבידה", "ילדים בגן", "איך הכבידה פועלת", "פשוטה"
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header">🌟 חיים אישיים ובריאות</div>
+      <div class="category-intro">פרומפטים לשיפור איכות החיים, בריאות, פיתוח אישי וניהול הזמן</div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">תוכנית אימון אישית</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'workout-plan')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">קבל תוכנית אימון מותאמת אישית עם תרגילים, לוח זמנים ומעקב התקדמות</div>
+        <div class="prompt-text" id="workout-plan">
+          צור תוכנית אימון כושר מותאמת אישית עבור <span class="variable">המין</span> בן/בת
+          <span class="variable">הגיל</span> עם רמת כושר <span class="variable">רמת הכושר הנוכחית</span>. המטרה העיקרית:
+          <span class="variable">המטרה העיקרית</span>
+
+          התוכנית תכלול: 1. הערכה ראשונית ומדידות בסיס 2. מטרות קצרות טווח (חודש) וארוכות טווח (3-6 חודשים) 3. תוכנית
+          שבועית מפורטת עם ימי אימון ומנוחה 4. תרגילים ספציפיים עם מספר חזרות וסטים 5. התקדמות הדרגתית ועלייה בעומס 6.
+          המלצות תזונה בסיסיות 7. טיפים למניעת פציעות 8. מערכת מעקב אחר התקדמות 9. תוכנית לשינויים ושיפורים פרטים
+          נוספים: - זמן זמין לאימון: <span class="variable">זמן פנוי שבועי</span> - ציוד זמין:
+          <span class="variable">ציוד/מתקנים</span> - מגבלות רפואיות: <span class="variable">מגבלות או בעיות</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "אישה", "32", "מתחילה", "ירידה במשקל", "3 שעות בשבוע", "כלי בית + חדר כושר", "בעיות גב קלות"
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">תוכנית ניהול זמן יעילה</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'time-management')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">פתח מערכת ניהול זמן מותאמת לסגנון החיים שלך עם טכניקות וכלים מעשיים</div>
+        <div class="prompt-text" id="time-management">
+          עצב מערכת ניהול זמן מותאמת אישית עבור <span class="variable">התפקיד/סטטוס שלך</span> עם האתגרים הבאים:
+          <span class="variable" style="transform: scale(1); box-shadow: none;">האתגרים העיקריים</span>. המערכת תכלול: 1. ניתוח השימוש הנוכחי בזמן וזיהוי בזבוזי זמן 2.
+          שיטה לקביעת עדיפויות יומיות ושבועיות 3. תוכנית יומית מובנית עם בלוקי זמן 4. טכניקות פרודוקטיביות מותאמות
+          (פומודורו, time blocking וכו') 5. אסטרטגיות לניהול הפרעות ודחיפות 6. מערכת מעקב ובקרה שבועית 7. טיפים לאיזון
+          עבודה-חיים אישיים 8. המלצות לכלים וטכנולוגיות מועילות 9. תוכנית לשיפור הדרגתי פרטי המצב הנוכחי: - שעות עבודה:
+          <span class="variable">מספר שעות ביום</span> - התחייבויות אישיות:
+          <span class="variable">משפחה/תחביבים</span> - יעדים אישיים: <span class="variable">מה שחשוב להשיג</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "הורה עובד", "קושי להספיק הכל", "8 שעות", "2 ילדים צעירים", "התפתחות מקצועית"
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header">🎭 מקצועות ויעוץ</div>
+      <div class="category-intro">פרומפטים למתן ייעוץ מקצועי בתחומים שונים - מכספים ועד בריאות</div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">יועץ כלכלי אישי</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'financial-advisor')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">קבל ייעוץ כלכלי מקצועי עם תוכנית השקעות, חיסכון ותקציב</div>
+        <div class="prompt-text" id="financial-advisor">
+          פעל כיועץ כלכלי מקצועי וספק ייעוץ מותאם עבור אדם בן <span class="variable">הגיל</span> עם המצב הכלכלי הבא:
+          <span class="variable">תיאור המצב הכלכלי</span>. המטרה הכלכלית העיקרית:
+          <span class="variable" style="transform: scale(1); box-shadow: none;">המטרה הכלכלית</span>
+
+          הייעוץ צריך לכלול: 1. ניתוח המצב הכלכלי הנוכחי ונקודות חוזק/חולשה 2. זיהוי סיכונים כלכליים והזדמנויות 3.
+          אסטרטגיית השקעה מותאמת לפרופיל הסיכון 4. תוכנית חיסכון לטווח קצר וארוך 5. המלצות לביטוחים נדרשים 6. תוכנית
+          פרישה וחיסכון פנסיוני 7. אסטרטגיות לחסכון במסים 8. תוכנית חירום ופריסה כלכלית 9. מעקב ובדיקה תקופתית של
+          התוכנית 10. המלצות לכלים ופלטפורמות מומלצות פרטים נוספים: - הכנסה חודשית:
+          <span class="variable">ההכנסה החודשית</span> - הוצאות קבועות: <span class="variable">ההוצאות החודשיות</span> -
+          חובות קיימים: <span class="variable">חובות נוכחיים</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "28", "בוגר צעיר עם הכנסה יציבה", "קניית דירה ראשונה", "15,000 ש״ח", "8,000 ש״ח", "הלוואת לימודים 50,000 ש״ח"
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">יועץ קריירה מקצועי</h3>
+          <button class="copy-button" onclick="copyPrompt(this, 'career-advisor')" style="transform: translateY(0px) scale(1);">📋 העתק</button>
+        </div>
+        <div class="prompt-description">קבל הדרכה מקצועית לפיתוח הקריירה עם תוכנית פעולה וייעוץ אסטרטגי</div>
+        <div class="prompt-text" id="career-advisor">
+          פעל כיועץ קריירה מקצועי וספק הדרכה מותאמת עבור אדם ב<span class="variable">התפקיד הנוכחי</span> שמעוניין להגיע
+          ל<span class="variable">התפקיד הרצוי</span> תוך <span class="variable">פרק הזמן</span>. הייעוץ יכלול: 1. הערכת
+          הכישורים והיכולות הנוכחיות 2. ניתוח פערי כישורים נדרשים לתפקיד היעד 3. תוכנית לימודים והכשרה מותאמת 4.
+          אסטרטגיית בניית רשת קשרים מקצועית 5. המלצות לפרויקטים והתנדבויות מחזקות 6. עדכון קורות החיים ופרופיל LinkedIn
+          7. הכנה לראיונות עבודה וטיפים למשא ומתן 8. זיהוי הזדמנויות עבודה וחברות מתאימות 9. תוכנית יעדי ביניים עם לוח
+          זמנים 10. מעקב התקדמות והתאמות בדרך מידע נוסף: - ותק בתחום: <span class="variable">שנות ניסיון</span> - השכלה
+          נוכחית: <span class="variable">רקע השכלתי</span> - מגבלות או עדיפויות:
+          <span class="variable">אילוצים או העדפות</span> - תחום העניין: <span class="variable">התחום המועדף</span>
+        </div>
+        <div class="example">
+          <div class="example-label">דוגמה לשימוש:</div>
+          "מפתח זוטר", "מנהל צוות טכנולוגי", "2-3 שנים", "3 שנים", "תואר במדעי המחשב", "עדיפות לחברות גדולות", "הייטק"
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+      <p style="margin: 0; color: #2c3e50; font-size: 1.1em;">
+        <strong>📚 משאבים נוספים:</strong> 
+        <a href="https://prompts.chat/" target="_blank" style="color: #3498db; text-decoration: none; margin: 0 10px;">Prompts.chat</a> • 
+        <a href="https://www.awesomegptprompts.com/" target="_blank" style="color: #3498db; text-decoration: none; margin: 0 10px;">אוסף פרומפטים לבחירה</a> • 
+        <a href="https://www.awesomeprompts.cc/" target="_blank" style="color: #3498db; text-decoration: none; margin: 0 10px;">פרומפטים מתקדמים</a>
+      </p>
+    </div>
+
+    <div class="footer-note">
+      <h3>🎯 זכור - המפתח להצלחה!</h3>
+      <p>
+        ככל שתהיה יותר ספציפי במילוי המשתנים האדומים, כך התוצאה תהיה טובה ומדויקת יותר. אל תהסס לבקש תוספות או שינויים
+        מהבוט לאחר שתקבל את התשובה הראשונה.
+      </p>
+      <p><strong>בהצלחה ותהנה מהתוצאות המדהימות! 🚀</strong></p>
+    </div>
+
+    <script>
+      function copyPrompt(button, promptId) {
+        const promptText = document.getElementById(promptId).innerText;
+
+        // יצירת אלמנט זמני להעתקה
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = promptText;
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextarea);
+
+        // שינוי מראה הכפתור
+        button.classList.add('copied');
+        button.innerHTML = '✅ הועתק!';
+
+        // הצגת התראה
+        const notification = document.getElementById('notification');
+        notification.style.display = 'block';
+
+        // החזרת הכפתור למצב רגיל אחרי 2 שניות
+        setTimeout(() => {
+          button.classList.remove('copied');
+          button.innerHTML = '📋 העתק';
+          notification.style.display = 'none';
+        }, 2000);
+      }
+
+      // הוספת אפקט הדגשה למשתנים בעת ריחוף
+      document.addEventListener('DOMContentLoaded', function () {
+        const variables = document.querySelectorAll('.variable');
+        variables.forEach((variable) => {
+          variable.addEventListener('mouseenter', function () {
+            this.style.transform = 'scale(1.1)';
+            this.style.boxShadow = '0 0 10px rgba(255, 107, 107, 0.5)';
+          });
+
+          variable.addEventListener('mouseleave', function () {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = 'none';
+          });
+        });
+
+        // הוספת אנימציה לכפתורי העתקה
+        const copyButtons = document.querySelectorAll('.copy-button');
+        copyButtons.forEach((button) => {
+          button.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+          });
+
+          button.addEventListener('mouseleave', function () {
+            if (!this.classList.contains('copied')) {
+              this.style.transform = 'translateY(0) scale(1)';
+            }
+          });
+        });
+      });
+    </script>
+  
+
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body></html>
